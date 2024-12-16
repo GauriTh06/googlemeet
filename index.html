@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet-like UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .meeticon{
+            height: 90px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #202124;
+            color: white;
+        }
+        .search-box {
+            padding: 10px;
+            width: 200px;
+            font-size: 15px;
+            border-radius: 20px;
+        }
+        .main-video {
+            background-color: #000;
+            height: 520px;
+            width:650px;
+            color: white;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .image{
+            height: 520px;
+            width:650px;
+            
+        }
+        .main-container{
+            display:flex;
+        }
+        .cont{
+            display:inline;
+        }
+        .participant-grid {
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .participant {
+            background-color: #fff;
+            border-radius: 8px;
+            height: 150px;
+            width: 210px;
+            margin: 15px 20px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .participant img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .mic{
+            height: 40px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            
+        }
+        .btn{
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+            padding: 10px 20px;
+
+        }
+        .share-screen{
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            padding: 5px 20px;
+            
+            
+        }
+        
+        .controls button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="googlemeeticon1.png" class="meeticon">
+        <h1>Google Meet</h1>
+        <input 
+            type="text" 
+            id="searchBox" 
+            class="search-box" 
+            placeholder="Search participants..." 
+        />
+    </div>
+<div class="main-container">
+    <div class="cont">
+        <div class="main-video"><img src="camara-image.jpg" class="image"></div>
+        <div class="controls">
+            <button class="btn"><img src="mute.png" class="mic"></button>
+            <button class="btn"><img src="camara-removebg-preview.png" class="mic"></button>
+            <button class="share-screen">Share Screen</button>
+        </div>
+    </div>
+    <div class="participant-grid" id="participantGrid">
+        <div class="participant" data-name="Gauri Thakre">
+            <img src="https://via.placeholder.com/80" alt="Gauri">
+            <p>Gauri Thakre</p>
+        </div>
+        <div class="participant" data-name="Suraj Shende">
+            <img src="https://via.placeholder.com/80" alt="Suraj">
+            <p>Suraj Shende</p>
+        </div>
+        <div class="participant" data-name="Pinki Hole">
+            <img src="https://via.placeholder.com/80" alt="Pinki">
+            <p>Pinki Hole</p>
+        </div>
+        <div class="participant" data-name="Chetan">
+            <img src="https://via.placeholder.com/80" alt="Chetan">
+            <p>Chetan</p>
+        </div>
+        <div class="participant" data-name="Shreya Deshmukh">
+            <img src="https://via.placeholder.com/80" alt="Shreya">
+            <p>Shreya Deshmukh</p>
+        </div>
+        <div class="participant" data-name="Payal Jangale">
+            <img src="https://via.placeholder.com/80" alt="Payal">
+            <p>Payal Jangale</p>
+        </div>
+        <div class="participant" data-name="Aniket Singh">
+            <img src="https://via.placeholder.com/80" alt="Aniket">
+            <p>Aniket Singh</p>
+        </div>
+        <div class="participant" data-name="Samir Rahate">
+            <img src="https://via.placeholder.com/80" alt="Samir">
+            <p>Samir Rahate</p>
+        </div>
+        <div class="participant" data-name="Himanshi Ambule">
+            <img src="https://via.placeholder.com/80" alt="Himanshi">
+            <p>Himanshi Ambule</p>
+        </div>
+        <div class="participant" data-name="Om Ghiye">
+            <img src="https://via.placeholder.com/80" alt="Om">
+            <p>Om Ghiye</p>
+        </div>
+    </div>
+</div>
+    
+
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const participantGrid = document.getElementById('participantGrid');
+        const participants = participantGrid.getElementsByClassName('participant');
+
+        searchBox.addEventListener('input', () => {
+            const searchText = searchBox.value.toLowerCase();
+
+            for (let participant of participants) {
+                const name = participant.getAttribute('data-name').toLowerCase();
+
+                if (name.includes(searchText)) {
+                    participant.style.display = '';
+                } else {
+                    participant.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
